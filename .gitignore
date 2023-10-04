@@ -1,0 +1,8 @@
+.venv
+.vscode
+__pycache__
+
+data
+models
+
+project_structure.txt
