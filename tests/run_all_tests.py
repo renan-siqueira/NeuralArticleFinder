@@ -7,7 +7,7 @@ import unittest
 import logging
 
 logging.basicConfig(
-    filename='log/unittest.log',
+    filename='unittest.log',
     level=logging.INFO,
     format='%(asctime)s - %(levelname)s - %(message)s'
 )
