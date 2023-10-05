@@ -1,3 +1,6 @@
+"""
+Unit tests for the training functionalities of NeuralArticleFinder project.
+"""
 import os
 import unittest
 
@@ -5,8 +8,10 @@ from src.training.train_model import load_processed_data, Word2Vec, Callback
 
 
 class TestTrainingFunctions(unittest.TestCase):
+    """Test suite for training related functions."""
 
     def test_load_processed_data(self):
+        """Tests the function that loads processed data from a file."""
         with open('temp_test_file.txt', 'w', encoding='utf-8') as file:
             file.write("hello world\n")
             file.write("testing load function\n")
@@ -20,6 +25,7 @@ class TestTrainingFunctions(unittest.TestCase):
         self.assertEqual(output, expected_output)
 
     def test_word2vec_model_saving(self):
+        """Tests the process of training and saving a Word2Vec model."""
         docs = [['hello', 'world'], ['testing', 'load', 'function']]
 
         model_save_path = 'temp_test_model.model'
