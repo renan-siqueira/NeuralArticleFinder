@@ -1,3 +1,8 @@
+"""
+Training module for the NeuralArticleFinder project.
+
+This module provides functionalities for training a Word2Vec model on preprocessed data.
+"""
 import os
 
 from gensim.models import Word2Vec
@@ -6,15 +11,29 @@ from gensim.models.callbacks import CallbackAny2Vec
 
 # A simple callback to print the progress of training
 class Callback(CallbackAny2Vec):
+    """Callback class to print training progress after each epoch."""
     def __init__(self):
         self.epoch = 0
 
-    def on_epoch_end(self, model):
+    def on_epoch_end(self, _model):
+        """Prints training progress after the end of each epoch.
+        
+        Args:
+            _model: Instance of the Word2Vec model being trained.
+        """
         print(f"Epoch: {self.epoch + 1} completed.")
         self.epoch += 1
 
 
 def load_processed_data(filepath):
+    """Loads and returns preprocessed data from a given filepath.
+
+    Args:
+        filepath (str): Path to the preprocessed data file.
+
+    Returns:
+        list: List of documents, where each document is a list of tokens.
+    """
     with open(filepath, 'r', encoding='utf-8') as file:
         documents = [line.strip().split() for line in file.readlines()]
     return documents
