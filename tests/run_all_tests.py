@@ -1,10 +1,20 @@
+"""
+Module to run all unit tests for NeuralArticleFinder project.
+
+This module provides functionalities to run all tests and log their results.
+"""
 import unittest
 import logging
 
-# logging.basicConfig(level=logging.INFO)
-logging.basicConfig(filename='log/unittest.log', level=logging.INFO, format='%(asctime)s - %(levelname)s - %(message)s')
+logging.basicConfig(
+    filename='log/unittest.log',
+    level=logging.INFO,
+    format='%(asctime)s - %(levelname)s - %(message)s'
+)
+
 
 class LoggedTestSuite(unittest.TestSuite):
+    """Test suite class that logs the result of each test case."""
 
     def run(self, result, debug=False):
         for index, test in enumerate(self):
@@ -17,9 +27,9 @@ class LoggedTestSuite(unittest.TestSuite):
                 test.debug()
 
             if result.wasSuccessful():
-                logging.info(f'Test case {index + 1} ({test}) passed.')
+                logging.info('Test case %d (%s) passed.', index + 1, test)
             else:
-                logging.info(f'Test case {index + 1} ({test}) failed.')
+                logging.info('Test case %d (%s) failed.', index + 1, test)
 
 
 if __name__ == '__main__':
