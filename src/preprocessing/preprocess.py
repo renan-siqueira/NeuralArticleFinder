@@ -1,3 +1,9 @@
+"""
+Module for preprocessing textual data.
+
+This module provides utilities to preprocess textual data,
+including tokenization, stopword removal, and lemmatization.
+"""
 import os
 import nltk
 
@@ -12,6 +18,18 @@ nltk.download('stopwords')
 
 
 def preprocess(corpus):
+    """
+    Preprocess a given text corpus.
+
+    Tokenizes the corpus, converts to lowercase, removes punctuation and stopwords,
+    and then lemmatizes the tokens.
+
+    Args:
+        corpus (str): The text to be preprocessed.
+
+    Returns:
+        list: A list of preprocessed tokens.
+    """
     stop_words = set(stopwords.words('english'))
     lemmatizer = WordNetLemmatizer()
 

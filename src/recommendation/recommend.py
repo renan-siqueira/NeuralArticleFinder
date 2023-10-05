@@ -1,19 +1,46 @@
+"""
+Recommendation module for the NeuralArticleFinder project.
+
+This module provides functionalities for vectorizing documents and finding the most
+similar documents to a given target document.
+"""
 import os
 
 from gensim.models import Word2Vec
 import numpy as np
 
 
-def vectorize_document(doc, model):
-    vectors = [model.wv[word] for word in doc if word in model.wv]
+def vectorize_document(document_tokens, w2v_model):
+    """
+    Vectorize a document using Word2Vec model.
+
+    Args:
+        document_tokens (list): List of tokens in a document.
+        w2v_model: Trained Word2Vec model.
+
+    Returns:
+        numpy.ndarray: Vector representation of the document.
+    """
+    vectors = [w2v_model.wv[word] for word in document_tokens if word in w2v_model.wv]
     if vectors:
         return np.mean(vectors, axis=0)
-    return np.zeros(model.vector_size)
+    return np.zeros(w2v_model.vector_size)
 
 
-def most_similar_docs(target_doc, model, documents):
-    target_vector = vectorize_document(target_doc, model)
-    document_vectors = [vectorize_document(doc, model) for doc in documents]
+def most_similar_docs(target_tokens, w2v_model, all_documents):
+    """
+    Find and rank the most similar documents to the target document.
+
+    Args:
+        target_tokens (list): List of tokens in the target document.
+        w2v_model: Trained Word2Vec model.
+        all_documents (list): List of all documents to search from.
+
+    Returns:
+        list: List of tuples containing the document and its similarity score.
+    """
+    target_vector = vectorize_document(target_tokens, w2v_model)
+    document_vectors = [vectorize_document(doc, w2v_model) for doc in all_documents]
 
     if np.all(target_vector == 0):
         print("The target document has no representation in the trained model.")
@@ -23,10 +50,14 @@ def most_similar_docs(target_doc, model, documents):
     valid_indices = np.where(norms != 0)[0]
 
     similarities = np.zeros(len(document_vectors))
-    similarities[valid_indices] = np.dot(np.array(document_vectors)[valid_indices], target_vector) / norms[valid_indices]
+
+    similarities[valid_indices] = np.dot(
+        np.array(document_vectors)[valid_indices],
+        target_vector
+    ) / norms[valid_indices]
 
     sorted_indexes = np.argsort(similarities)[::-1]
-    return [(documents[i], similarities[i]) for i in sorted_indexes]
+    return [(all_documents[i], similarities[i]) for i in sorted_indexes]
 
 
 if __name__ == '__main__':
