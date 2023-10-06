@@ -4,71 +4,28 @@ NeuralArticleFinder is a project aimed at preprocessing articles, training neura
 
 ## Technologies Used
 
-- **Python**: The core programming language used for this project.
-- **NLTK**: Used for text preprocessing.
-- **Gensim**: Used for training the Word2Vec model and article recommendation.
-- **NumPy**: Used for numerical operations.
+- **Python**: The core programming language used.
+- **NLTK**: Text preprocessing.
+- **Gensim**: Word2Vec model training and article recommendation.
+- **NumPy**: Numerical operations.
 
 ---
 
 ## Getting Started
 
-### 1. Clone the Repository
+- [Clone the Repository](https://github.com/renan-siqueira/NeuralArticleFinder/wiki/1.-Setup-&-Installation#1-clone-the-repository)
 
-First, you need to clone the repository to your local machine. You can do this using:
+- [Setting Up a Virtual Environment](https://github.com/renan-siqueira/NeuralArticleFinder/wiki/1.-Setup-&-Installation#2-setting-up-a-virtual-environment)
 
-```bash
-git clone https://github.com/renan-siqueira/NeuralArticleFinder.git
-```
+- [Install Dependencies](https://github.com/renan-siqueira/NeuralArticleFinder/wiki/1.-Setup-&-Installation#3-install-dependencies)
 
-Access the project root folder:
-```bash
-cd NeuralArticleFinder
-```
+- [Run the Project](https://github.com/renan-siqueira/NeuralArticleFinder/wiki/1.-Setup-&-Installation#4-run-the-project)
 
 ---
 
-### 2. Setting Up a Virtual Environment
+## Documentation
 
-It's a good idea to create a virtual environment to manage dependencies. Here's how you can do that:
-
-```bash
-python -m venv env
-```
-
-Activate the virtual environment:
-
-- Windows:
-
-```bash
-env\Scripts\activate
-```
-
-- macOS and Linux:
-
-```bash
-source env/bin/activate
-```
-
----
-
-### 3. Install Dependencies
-
-Once you have your virtual environment set up and running, you can install the dependencies:
-
-```bash
-pip install -r requirements.txt
-```
-
----
-
-### 4. Run the Project
-
-Now, you can run the specific modules, for example:
-
-```bash
-python -m src.preprocessing.preprocess
-```
+For a detailed breakdown of the project, including its modules, setup, and features, please refer to the [project Wiki](https://github.com/renan-siqueira/NeuralArticleFinder/wiki).
 
 ---
 
@@ -76,8 +33,12 @@ python -m src.preprocessing.preprocess
 
 This project is open-sourced and available to everyone under the [MIT License](LICENSE).
 
+For more details check the [License and Copyright](https://github.com/renan-siqueira/NeuralArticleFinder/wiki/License-and-Copyright) wiki page.
+
 ---
 
 ## Contributing
 
 Contributions are welcome! Feel free to open an issue or submit a pull request if you find any bugs or have suggestions for improvements.
+
+Consult the [Contribution and Community Guidelines](https://github.com/renan-siqueira/NeuralArticleFinder/wiki/Contribution-Guidelines) wiki page.
